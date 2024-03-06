@@ -1,0 +1,54 @@
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+--
+-- Host: localhost    Database: demoblog
+-- ------------------------------------------------------
+-- Server version	8.0.31
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `arearank`
+--
+
+DROP TABLE IF EXISTS `arearank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `arearank` (
+  `id` int NOT NULL,
+  `area` varchar(45) DEFAULT NULL,
+  `carnum` int DEFAULT NULL,
+  `alertnum` int DEFAULT NULL,
+  `avescore` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `arearank`
+--
+
+LOCK TABLES `arearank` WRITE;
+/*!40000 ALTER TABLE `arearank` DISABLE KEYS */;
+INSERT INTO `arearank` VALUES (2,'榆林市',5731,5055113,2260),(3,'铜川市',1227,760721,1553),(4,'渭南市',2228,1717487,1494),(5,'汉中市',938,738857,1448),(6,'咸阳市',1986,1181978,1277),(7,'杨陵',45,19085,1203),(8,'安康市',679,443457,1052),(9,'宝鸡市',1793,868922,1005),(10,'韩城市',88,47579,789),(11,'商洛市',789,235146,646),(12,'西咸新区',513,166846,627),(13,'西安市',5666,1904643,576);
+/*!40000 ALTER TABLE `arearank` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-05-19 20:14:53
