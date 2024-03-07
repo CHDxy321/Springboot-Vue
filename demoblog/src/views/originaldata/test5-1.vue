@@ -10,7 +10,7 @@
           <el-button type="success"  plain @click="routefive">客运危运数据</el-button>
           <el-button type="success"  plain @click="routesix">企业安全数据</el-button>
           <el-button type="success"  @click="routeone">道路运输数据</el-button>
-          <el-button type="success"  @click="routeeight">高速公路数据</el-button>
+          <el-button type="success"  plain @click="routeeight">高速公路数据</el-button>
         </div>
       </div>
 <!--        <div style="display:inline-block;text-align:center;padding-top:5px;margin-top: 2px;,margin-bottom:8px">-->

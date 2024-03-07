@@ -11,11 +11,10 @@
       <div style="margin-top: 15px;font-weight: 700;color: #303133">
         <el-upload class="upload-demo" action="" :on-change="handleChange" :show-file-list="false" :auto-upload="true">
           <el-button  size="small" type="primary" style="margin-right: 10px">上传文件</el-button>
-        </el-upload>
-        <el-row  style="display:inline-block;text-align:center;padding-top:5px;margin-top: 2px;,margin-bottom:5px">
-          <el-button type="primary" round @click="routeone">客运</el-button>
+          <el-button type="primary" round @click="routethree">客运</el-button>
           <el-button type="primary" round @click="routetwo">危运</el-button>
-        </el-row>
+        </el-upload>
+
 
       </div>
       <!--数据展示部分-->
@@ -85,7 +84,7 @@ export default {
       currentPage: 1, // 当前页码
       total: null,
       pageNum: 1,
-      pageSize: 20,
+      pageSize: 18,
       search: '',
     }
   },
@@ -108,7 +107,7 @@ export default {
       this.load()
     },
 
-    routeone(){
+    routethree(){
       this.$router.push({
         path: 'test6-3'
       })

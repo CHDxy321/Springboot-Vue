@@ -9,6 +9,7 @@ export default new Router({
       path: '/',
       component: () => import('../views/login.vue'),
     },
+    //注册页面
     {
       path: '/register',
       component: () => import('../views/register.vue'),
@@ -148,7 +149,7 @@ export default new Router({
               path: 'business',
               component: ()=> import('../views/test4/business.vue'),
               meta: {
-                title: '企业安全评估'
+                title: '企业安全信息'
               }
             },
             {
@@ -157,7 +158,21 @@ export default new Router({
               meta: {
                 title: '企业安全细则'
               }
-            }
+            },
+            {
+              path: 'test4-3',
+              component: () => import('../views/test4/test4-3.vue'),
+              meta: {
+                title: '在线安全评估'
+              }
+            },
+            {
+              path: 'test4-4',
+              component: () => import('../views/test4/test4-4.vue'),
+              meta: {
+                title: '企业安全评估'
+              }
+            },
           ]
         },
         {
@@ -196,6 +211,13 @@ export default new Router({
                 title: '危运'
               }
             },
+            {
+              path: 'test6-5',
+              component: () => import('../views/test6/test6-5.vue'),
+              meta: {
+                title: '数据可视化'
+              }
+            },
           ]
         },
 
@@ -223,6 +245,7 @@ export default new Router({
                 title: '二级菜单2-2'
               },
             },
+
             {
               path: 'test2-3',
               component: () => import('../views/test2/test2-3.vue'),

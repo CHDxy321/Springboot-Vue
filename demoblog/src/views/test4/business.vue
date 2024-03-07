@@ -4,7 +4,7 @@
     <div class="container" style="margin-top:0px">
       <div style="margin-left: 10px">
         <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item :to="{ path: '/test4/business' }">企业安全评估</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/test4/business' }">企业安全信息</el-breadcrumb-item>
           <el-breadcrumb-item>企业安全指标</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
@@ -57,12 +57,12 @@
       <!-- page-size每页展示的记录数-->
       <!--创建点击事件@currentchange="page"-->
       <el-row>  <el-button  type="primary" fixed="left" style="margin-left: 15px" @click="isshow">企业数据量化</el-button>
-<!--        <el-link type="primary" @click="isshow">收起</el-link>-->
+        <!--        <el-link type="primary" @click="isshow">收起</el-link>-->
       </el-row>
       <div class="table-container" style="margin: 12px" v-show="show1">
         <div style="margin: 10px">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/test4/business' }">企业安全评估</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/test4/business' }">企业安全信息</el-breadcrumb-item>
             <el-breadcrumb-item>企业安全指标量化结果</el-breadcrumb-item>
           </el-breadcrumb>
         </div>
@@ -144,6 +144,11 @@ export default {
       // const _this=this;
       // this.axios.get('http://localhost:8181/book/')
       //  console.log(formInline.data)
+    },
+    isshow(){
+      this.$router.push({
+        path:'test4-4'
+      })
     },
 // 提交 数据函数 立即创建submitForm
     submitForm() {
@@ -439,3 +444,5 @@ export default {
   color: #ee9509;
 }
 </style>
+
+

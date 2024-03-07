@@ -1,174 +1,194 @@
 <template>
-  <!--一个template只能有一个根节点，所以要加div标签-->
   <div class="content-box">
-<!--    //道路运输中心-->
-    <div class="container" style="margin-top:0px">
-<!--      <div style="margin-left: 10px">
-       <div style="display: inline-block">道路运输中心</div>
-        <div style="display: inline-block">交通监控中心</div>
-        <div style="display: inline-block">交通监控中心</div>
-        <div style="display: inline-block">交通监控中心</div>data.vue
-      </div>-->
-    </div>
+    <div class="main">
+      <!--危险货物运输事故图-->
+      <div class="image">
+        <el-card class="left-card" style="display: inline-block;width: 48%;margin-left: 0.5%">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 19px">陕西省道路运输事业发展中心</span>
+          </div>
+          <div  class="text" style="font-family: 微软雅黑;text-indent:25px;display: inline-block;padding-top: 2px;font-size: 16px;">
+               陕西省道路运输事业发展中心，坚持“科学办交通、<br>
+            合力办交通、勤俭办交通”的发展理念，以“三个服务”<br>
+            为宗旨，以改革创新为动力，以提高质量和效益为核心,<br>
+            围绕“大运输、大物流”发展战略。紧跟公路建设步伐，<br>
+            凝聚合力、攻坚克难，全省道路运输行业呈现出稳中有<br>
+            进的发展新态势,有力支撑了全省经济社会平稳较快发<br>
+            展。<br>
+            <br><br>
+            <el-button style="float: left; font-size: 17px;padding: 3px 0" type="text" @click="open1">了解更多</el-button>
+            <br>
 
-      <div class="container" style="margin-top:0px">
-        <div style="margin-left: 10px">
-          <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/originaldata/data' }">元数据管理</el-breadcrumb-item>
-            <el-breadcrumb-item>交通监控中心</el-breadcrumb-item>
-          </el-breadcrumb>
+          </div>
+          <div class="img-paper" style="display: inline-block;">
+            <el-image  src="/static/img/doc/daoluyunshu.png" :preview-src-list="srcList1"></el-image>
+
+          </div>
+        </el-card>
+
+        <el-card class="center-card" style="display: inline-block;width: 48%;margin-left: 0.5%">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 19px">陕西省高速公路收费中心</span>
+          </div>
+          <div  class="text" style="font-family: 微软雅黑;text-indent:25px;display: inline-block;padding-top: 2px;font-size: 16px;">
+               陕西省高速公路收费中心是省交通运输厅直属处级<br>
+            公益一类事业单位,主要职责是承担高速公路联网收费<br>
+            系统建设管护任务；承担全省高速公路运行信息监测、<br>
+            监控和报送发布工作；协助开展全省公路收费稽查的服<br>
+            务工作等。<br>
+            陕西省高速公路收费中心联系邮箱:sxsfgl@163.com<br>
+            服务内容包括：领导信箱、人事、投稿（信息）<br>
+            <br><br>
+            <el-button style="float: left; font-size: 17px;padding: 3px 0" type="text" @click="open2">了解更多</el-button>
+            <br>
+
+          </div>
+          <div class="img-paper" style="display: inline-block;">
+            <el-image src="/static/img/doc/gaosugonglu.png" :preview-src-list="srcList2"></el-image>
+          </div>
+        </el-card>
+
+        <el-card class="right-card" style="display: inline-block;width: 32%;margin-left: 0.5%">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 19px">陕西省交通运输技术服务信息平台</span>
+          </div>
+          <div class="text" style="font-family: 微软雅黑;text-indent:25px;display: inline-block;padding-top: 2px;font-size: 16px;">
+               陕西省交通运输技术<br>
+            服务信息平台是正处级公<br>
+            益二类事业单位，承担营<br>
+            运车辆标准化管理体系的<br>
+            技术支撑工作,开展营运<br>
+            车辆技术状况等级鉴定、<br>
+            燃料消耗量检测认定。
+            <br><br><br>
+            <el-button style="float: left; font-size: 17px;padding: 3px 0" type="text" @click="open3">了解更多</el-button>
+            <br>
+          </div>
+          <div class="img-paper" style="display: inline-block;">
+            <el-image   src="/static/img/doc/jiaotongyunshu.png" :preview-src-list="srcList3"></el-image>
+
+          </div>
+        </el-card>
+
+        <el-card class="left2-card" style="display: inline-block;width: 32%;margin-left: 0.5%;margin-top:  0.5%">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 19px">陕西省公安厅交通管理局</span>
+
+          </div>
+          <div class="text" style="font-family: 微软雅黑;text-indent:25px;display: inline-block;padding-top: 2px;font-size: 16px;">
+            陕西省公安厅交通管理局，<br>
+            为群众提供变更驾驶证联系方<br>
+            式，违法处理，罚款缴纳，交<br>
+            通违法行为消除，交通违法处<br>
+            理撤销申请，满分教育，审验<br>
+            教育，学法减分，事故快处，<br>
+            等30余项公安交通管理业务。<br>
+            <br><br>
+            <el-button style="float: left; font-size: 17px;padding: 3px 0" type="text" @click="open4">了解更多</el-button>
+            <br>
+          </div>
+          <div class="img-paper" style="display: inline-block;">
+            <el-image  src="/static/img/doc/gonganting.png" :preview-src-list="srcList4"></el-image>
+          </div>
+        </el-card>
+
+        <el-card class="center2-card" style="display: inline-block;width: 32%;margin-left: 0.5%;margin-top:  0.5%">
+          <div slot="header" class="clearfix">
+            <span style="font-size: 19px">陕西省高速公路路政执法总队</span>
+          </div>
+          <div class="text" style="font-family: 微软雅黑;text-indent:25px;display: inline-block;padding-top: 2px;font-size: 16px;">
+               陕西省高速公路路政执法<br>
+            总队对高速公路超限运输事项<br>
+            进行监督检查，依法查处违法<br>
+            超限运输行为；加强全省高速<br>
+            公路路政执法队伍建设，推进<br>
+            执法信息化技术应用，提高执<br>
+            法效能；完成省交通运输厅交<br>
+            办的其他工作。<br>
+            <br>
+            <el-button style="float: left; font-size: 17px;padding: 3px 0" type="text" @click="open5">了解更多</el-button>
+            <br>
+          </div>
+          <div class="img-paper" style="display: inline-block;">
+            <el-image  src="/static/img/doc/zhifa.png" :preview-src-list="srcList5"></el-image>
+          </div>
+        </el-card>
+
         </div>
-        <div class="table-container"style="margin: 5px">
-          <el-table :data="tableData" border  fit="true" >
-            <el-table-column fixed prop="id" label="编号" width="80" align="center" fixed="left" sortable></el-table-column>
-            <el-table-column prop="carnum" label="车牌号码" width="120" align="center"></el-table-column>
-            <el-table-column prop="alarm" label="报警内容" width="120" align="center"></el-table-column>
-            <el-table-column prop="starttime" label="开始时间" width="300" align="center"></el-table-column>
-            <el-table-column prop="alarmtime" label="报警时间" width="300" align="center"></el-table-column>
-            <el-table-column prop="level" label="级别" width="80" align="center"></el-table-column>
-            <el-table-column prop="company" label="所属企业" width="300" align="center"></el-table-column>
-            <el-table-column fixed prop="speed" label="速度" width="80" align="center" ></el-table-column>
-            <el-table-column fixed prop="status" label="营业状态" width="80" align="center"></el-table-column>
-            <el-table-column prop="chixutime" label="持续时间" width="120" align="center"></el-table-column>
-          </el-table>
-        </div>
+
+
       </div>
 
+    </div>
   </div>
 </template>
 
-
 <script>
-// import Modifydialog from '@/components/dialog/modify.vue';
 export default {
-// 引入组件
-// components:{
-//   'modify-dialog': Modifydialog
-//   },
-  // total定义总数,null定义空值，由后端读取数据
-  data(){
+  data() {
     return {
-      total: null,
-      pageNum: null,
-      tableData: null,
-      pageSize: null,
-      search: '',
+
+      srcList1:['/static/img/doc/daoluyunshu.png',],
+      srcList2:['/static/img/doc/gaosugonglu.png',],
+      srcList3:['/static/img/doc/jiaotongyunshu.png',],
+      srcList4:['/static/img/doc/gonganting.png',],
+      srcList5:['/static/img/doc/zhifa.png',],
+
+
     }
   },
-
   methods:{
+    open1() {window.open('http://www.sxsdlyssyfzzx.cn/newsshow.php?cid=105&id=18091',"_blank")},
+    open2() {window.open('https://www.sxgssfzx.cn/',"_blank")},
+    open3() {window.open('http://www.sxjtinfo.com/',"_blank")},
+    open4() {window.open('https://sn.122.gov.cn/',"_blank")},
+    open5() {window.open('http://jtyst.shaanxi.gov.cn/lzzf.html',"_blank")},
 
 
-  // 查询页数
-  page(currentpage) {
-    const _this = this;
-    // 页码与显示链接
-    this.$axios.get('/api/monitor/findAll/' + currentpage + '/10').then(function (resp) {
-      // console.log(resp)
-      console.log(resp.data)
-      _this.tableData = resp.data.content;
-      _this.total = resp.data.totalElements
-      _this.pageSize=resp.data.size
-    })
-  },
-    // 删除数据 直接调后端删除
-    deleteid(row){
-// 消息框提示
-      this.$confirm('确定删除该条记录吗?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        const _this=this;
-        this.$axios.delete('/api/book/deleteById/'+row.id).then(function (resp) {
-// 前端自带动态刷新界面
-          window.location.reload()
-        });
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
-        });
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
-      });
-    },
 
-// 修改数据 编辑 传到后台 第一步先调到前端页面
-    edit(row) {
-      // 跳转页面到modify 不重新定义 this 数据读出并自动赋值 modify与test2-1大致相同
-      this.$router.push({
-        // 要跳页面的路径
-        path:'/modify',
-        // 参数 传送所选行的id
-        query:{
-          id:row.id
-        }
-      })
-    },
-
-  load(){
-    const _this = this;
-    this.$axios.get('http://localhost:8181/monitor/findAll/1/10',{
-      params: {
-        pageNum: this.currentPage,
-        pageSize: this.pageSize,
-        // search: this.search
-      }
-    }).then(function (resp) {
-      console.log(123)
-      console.log(resp)
-      // console.log(search)
-      _this.tableData=resp.data.content;
-      _this.total = resp.data.totalElements
-    })
-  },
-},
-
-// 首页刷新
-created() {
-  // 首页显示 调用load函数，对查询数据进行刷新显示
-  this.load();
-}
-
+  }
 }
 </script>
 
+
+
 <style>
-/* 设置当前选中行的背景颜色 */
-.el-table__body tr.current-row>td {
-  background: #c9eff5 !important;
+.main{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #f7faff;
+  left: 0;
+  top: 6px;
 }
-/* 设置table header的背景颜色 */
-.el-table__header th, .el-table__header tr {
-  background-color: #17B3A3;
-  color: black;
+.image{
+  width: 98%;
+  height: 30%;
+  float: left;
+  margin-left: 1%;
+  margin-top: 0.18%;
 }
-/* 设置表主体的高度 */
-.el-table__body td,.el-table__body th{
-  padding:3px;
+
+.el-card:hover {
+  /* 盒子阴影 */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4);
+  /* 盒子向上移动效果，改变上外边距 */
+  margin-top: 10px;
 }
-/* 设置表头的高度 */
-.el-table__header td,.el-table__header th{
-  padding:6px 0px;
+.el-card__header{background-color: rgba(184, 205, 255, 0.85);
 }
-/* 设置分页器的高度 */
-.site-wrapper .el-pagination {
-  margin-top: 5px;
-  text-align: right;
-}
-.el-pager li.active {
-  color: #080909;
-  cursor: default;
-  background-color: #17B3A3;
-  border-radius: 2px;
-}
-.delete-button{
-  color: #ee3441;
-}
-.delete-button:hover{
-  color: #ee9509;
-}
+.el-card__body {padding: 2px 20px 5px; background-color: #ecf0ff;}
+.img-paper{margin-top: 5px}
+
+.el-image{border: 0.5px solid #000000;width: 175px; height: 235px;}
+
+
+.text {font-size: 14px;margin-right: 4px}
+.clearfix:before,
+.clearfix:after {display: table;content: "";}
+.clearfix:after {clear: both}
+
+
 </style>
+
+
