@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 7.ECharts 组件使用
 
 ### 7.1ECharts 组件使用
@@ -386,3 +387,393 @@ var chart = echarts.init(dom, 'dark')
 
 #### 7.7.2  自定义主题
 
+=======
+## 7.ECharts 组件使用
+
+### 7.1ECharts 组件使用
+
+首先应该明确Echarts图形必须满足四项刚性条件才可以绘制：
+
+- 准备一个具有宽高的容器（container）；
+- 每次绘制之前需要初始化（init）；
+- 必须设置配置，否则无从绘制（option）；
+- 改变数据时必须传入改变的数据，否则监听不到新数据（setOption）；
+
+### 7.2 ECharts 示例
+
+  <!-- 步骤1：引入echarts.js文件 -->
+
+```
+ <script src="lib/echarts.min.js"></script>
+```
+
+  <!-- 步骤2：准备一个呈现图表的盒子 -->
+
+```
+<div style="width: 600px;height: 400px"></div>
+```
+
+  <!-- 步骤3：初始化echarts实例对象 -->
+
+  <!-- 参数, dom,决定图表最终呈现的位置 -->
+
+```
+var mCharts = echarts.init(document.querySelector('div'))
+```
+
+  <!-- 步骤4：准备配置项 -->
+
+```
+ var option = {
+      title: {
+        text: '成绩', // 标题文字
+        link: 'http://www.itcast.cn', // 标题超链接
+        textStyle: { // 标题样式设置
+          color: 'red' // 标题文字
+        }
+      },
+      xAxis: {
+        type: 'category',  // 指明x轴为 类目轴
+        data: ['小明', '小红', '小王'] // 为类目轴提供数据, 该数据是一个数组, 数组中的每个元素会呈现在x轴上
+      },
+      yAxis: {
+        type: 'value'  // 指明x轴为 数值轴, 指明数值轴之后, 无需指定data
+      },
+      series: [
+        {
+          name: '语文', // 为图标起一个名称
+          type: 'bar', // 指明该图标类型为 柱状图
+          data: [70, 92, 87] // 为x轴的每一个元素, 指明呈现在y轴的数值
+        }
+      ]
+    }
+```
+
+  <!-- 步骤5：将配置项设置给echarts实例对象 -->
+
+```
+ mCharts.setOption(option)
+```
+
+### 7.3 柱状图典型属性
+
+- 最大值\最小值  `markPoint`
+
+```
+series: [
+ {
+    ......
+    markPoint: {
+      data: [
+       {
+          type: 'max', name: '最大值'
+       },
+       {
+         type: 'min', name: '最小值'
+       }
+     ]
+   }
+]
+```
+
+- 平均值  `markLine`
+
+```
+series: [
+ {
+    ......
+    markLine: {
+      data: [
+       {
+          type: 'average', name: '平均值'
+       }
+     ]
+   }
+ }
+]
+```
+
+- 数值显示 `label` ；柱状图宽度  `barwidth`；横向柱状图 `改变x、y轴角色`
+
+### 7.4 通用属性
+
+##### 7.4.1 通用配置`title`
+
+- 图表文字样式
+  - text
+  - textstyle
+
+
+- 标题边框
+  - borderWidth 边框宽度
+  - borderColor 边框颜色
+  - borderRadius 边框圆角
+- 标题位置（top、left)
+
+##### 7.4.2 通用配置 `tooltip`
+
+- 用于配置鼠标滑过或点击图表时的显示样式
+- 触发类型: `trigger`
+  - 鼠标滑过时显示图表信息
+  - item、axis
+- 触发时机 : `triggerOn`
+  - 点击后显示图表信息
+  - mouseover、click
+- 格式化 `formatter`
+  - 决定图表弹出框的内容格式
+  - 字符串模板、回调函数
+
+##### 7.4.3 通用配置 `toolbox`
+
+- ECharts提供的图表工具栏
+- 显示工具栏按钮 `figure`
+  - 导出图片 `saveAsImage`
+  - 数据展示 `dataView`
+  - 重置 `restore`
+  - 区域缩放 `dataZoom`
+  - 动态类型图表切换 `magicType`
+
+##### 7.4.4 通用配置 `legend`
+
+- 配合series使用，用于筛选数据
+  - legend中的data是一个数组，data的值要和series数组中某组数据的name值保持一致
+
+### 7.5 地图的基本实现和常见属性
+
+##### 7.5.1 百度地图API
+
+##### 7.5.2 矢量地图
+
+<!--步骤1  ECharts 最基本的代码结构-->
+此时 option 是一个空空如也的对象
+<!--步骤2 准备中国的矢量json文件, 放到 json/map/目录之下-->
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="js/echarts.min.js"></script>
+</head>
+<body>
+  <div style="width: 600px;height:400px"></div>
+  <script>
+    var mCharts = echarts.init(document.querySelector("div"))
+    var option = {}
+    mCharts.setOption(option)
+  </script>
+</body>
+</html>
+```
+
+<!--步骤3 使用 Ajax 获取 china.json-->
+<!--步骤4 在Ajax的回调函数中, 往 echarts 全局对象注册地图的 json 数据-->
+
+```
+echarts.registerMap('chinaMap', chinaJson)//chinaJson是中国各个省份的矢量地图数据
+```
+
+<!--步骤5 获取完数据之后, 需要配置 geo 节点, 再次的 setOption-->
+
+```
+var mCharts = echarts.init(document.querySelector("div"))
+$.get('json/map/china.json', function (chinaJson) {
+
+  echarts.registerMap('chinaMap', chinaJson)
+  
+var option = {
+    geo: {
+      type: 'map',// map是一个固定的值
+      map: 'chinaMap',//chinaMap需要和registerMap中的第一个参数保持一致
+   }
+ };
+  mCharts.setOption(option)
+})
+```
+
+##### 7.5.3 地图常用配置
+
+- 缩放拖动 `roam`//设置循序缩放以及拖动的效果
+- 名称显示 `label：{show:true}`
+- 初始化缩放比例设置 `zoom`
+- 地图中心点坐标设置 `center：[经度，纬度]`
+
+##### 7.5.4 地图常用显示效果
+
+###### 7.5.4.1 显示某个区域
+
+- 准备安徽省的矢量地图数据
+- 加载安徽省地图的矢量数据
+
+```
+$.get('json/map/anhui.json', function (anhuiJson) {})
+```
+
+- 在Ajax的回调函数中注册地图矢量数据
+
+```
+echarts.registerMap('anhui', anhuiJson)
+```
+
+- 配置 geo 的 `type:'map' ，  `map:'anhui'`
+- 通过 zoom 调整缩放比例
+- 通过 center 调整中心点
+
+```
+<script>
+  var mCharts = echarts.init(document.querySelector("div"))
+  $.get('json/map/anhui.json', function (anhuiJson) {
+    console.log(anhuiJson)
+    echarts.registerMap('anhui', anhuiJson)
+    var option = {
+      geo: {
+        type: 'map',
+        map: 'anhui',
+        label: {
+          show: true
+       },
+        zoom: 1.2,
+        center: [116.507676, 31.752889]//地图显示中心点坐标
+     }
+   };
+    mCharts.setOption(option)
+ })
+</script>
+```
+
+###### 7.5.4.2 不同城市颜色不同
+
+- 1.显示基本的中国地图
+
+- ```
+  <body>
+    <div style="width: 600px;height:400px;border:1px solid red"></div>
+    <script>
+      var mCharts = echarts.init(document.querySelector("div"))
+      $.get('json/map/china.json', function (chinaJson) {
+        echarts.registerMap('chinaMap', chinaJson)
+        var option = {
+          geo: {
+            type: 'map',
+            map: 'chinaMap',
+            roam: true,
+            label: {
+              show: true
+           }
+         }
+       }
+        mCharts.setOption(option)
+     })
+    </script>
+  </body>
+  ```
+
+- 2.准备好城市空气质量的数据, 并且将数据设置给 series
+
+- ```
+  var airData = [{ name: '北京', value: 39.92 },{ name: '天津', value:
+  39.13 },{ name: '上海', value: 31.22 },{ name: '重庆', value: 66 },{
+  name: '河北', value: 147 },{ name: '河南', value: 113 },{ name: '云南',
+  value: 25.04 },{ name: '辽宁', value: 50 },{ name: '黑龙江', value: 114
+  },{ name: '湖南', value: 175 },{ name: '安徽', value: 117 },{ name: '山
+  东', value: 92 },{ name: '新疆', value: 84 },{ name: '江苏', value: 67 },
+  { name: '浙江', value: 84 },{ name: '江西', value: 96 },{ name: '湖北',
+  value: 273 },{ name: '广西', value: 59 },{ name: '甘肃', value: 99 },{
+  name: '山西', value: 39 },{ name: '内蒙古', value: 58 },{ name: '陕西',
+  value: 61 },{ name: '吉林', value: 51 },{ name: '福建', value: 29 },{
+  name: '贵州', value: 71 },{ name: '广东', value: 38 },{ name: '青海',
+  value: 57 },{ name: '西藏', value: 24 },{ name: '四川', value: 58 },{
+  name: '宁夏', value: 52 },{ name: '海南', value: 54 },{ name: '台湾',
+  value: 88 },{ name: '香港', value: 66 },{ name: '澳门', value: 77 },{
+  name: '南海诸岛', value: 55 }]
+  ......
+  var option = {
+    ......
+    series: [
+     {
+        data: airData
+     }
+   ]
+  }
+  ```
+
+- 3.将 series 下的数据和 geo 关联起来
+
+  `geoIndex: 0  ` `type: 'map'`
+
+  ```
+  var option = {
+    series: [
+     {
+        data: airData,
+        geoIndex: 0,
+        type: 'map'
+     }
+   ]
+  }
+  ```
+
+- 4.结合 `visualMap` 配合使用
+
+  `visualMap` 是视觉映射组件, 和之前区域缩放 `dataZoom` 很类似, 可以做数据的过滤. 只不过
+  `dataZoom` 主要使用在直角坐标系的图表, 而 `visualMap` 主要使用在地图或者饼图中
+
+```
+var option = {
+  geo: {
+    type: 'map',
+    map: 'chinaMap',
+    roam: true,
+    label: {
+      show: true
+   }
+ },
+  series: [
+   {
+      data: airData,
+      geoIndex: 0,
+      type: 'map'
+   }
+ ],
+  visualMap: {
+    min: 0, // 最小值
+    max: 300, // 最大值
+    inRange: {
+      color: ['white', 'red'] // 颜色的范围
+   },
+    calculable: true // 是否显示拖拽用的手柄（手柄能拖拽调整选中范围）
+ }
+}
+```
+
+### 7.6 ECharts  通用配置小结
+
+#### 7.6.1 柱状图 bar
+
+| series[].type | xAxis | yAxis | markPoint     | markLine | label    | barWidth |
+| :-----------: | ----- | ----- | ------------- | -------- | -------- | -------- |
+|   图表类型    | x轴   | y轴   | 最大值/最小值 | 平均值   | 显示文本 | 柱宽度   |
+
+#### 7.6.2 折线图 line
+
+| series[].type | xAxis | yAxis | markPoint     | markLine | markArea | smooth |
+| :-----------: | ----- | ----- | ------------- | -------- | -------- | ------ |
+|   图表类型    | x轴   | y轴   | 最大值/最小值 | 平均值   | 标注区域 | 平滑线 |
+
+| lineStyle | areaStyle | boundaryGao | scale       |
+| :-------: | --------- | ----------- | ----------- |
+| 线条风格  | 风格x轴   | 紧挨边缘    | 脱离o值比例 |
+
+### 7.7 主题使用
+
+#### 7.7.1 自带主题
+
+`light `    `dark`
+
+```
+var chart = echarts.init(dom, 'light')
+var chart = echarts.init(dom, 'dark')
+```
+
+#### 7.7.2  自定义主题
+
+>>>>>>> 4c3dc94d2c494bf28db050b6d1a8cc976794d173
