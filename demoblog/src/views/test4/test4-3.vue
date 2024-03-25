@@ -6,99 +6,184 @@
            style="padding-top:15px;line-height:30px;border-bottom:1px solid #E1E1E1;color:#262626;padding-left: 10px;font-size: 15px;font-weight: bold;">
         企业安全等级评估
       </div>
-      <div class="riskform" style="display: inline-block"></div>
+      <div class="riskform">
 
       <el-form style="width: 70%":model="riskForm" :rules="rules" ref="riskForm" label-width="150px" class="demo-riskForm">
-          <el-form-item label="年龄" prop="id">
-            <el-input placeholder="年龄" v-model="input"></el-input>
+        <el-form-item label="危险货物类型(DG1)">
+          <el-select v-model="form.dg1">
+            <el-option v-for="option in dg1Options" :key="option.value" :label="option.label" :value="option.value"></el-option>
+          </el-select>
+        </el-form-item>
+          <el-form-item label="危险货物的装卸技术">
+            <el-select v-model="form.dg2grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="工作时长" prop="cllx">
-            <el-input placeholder="工作时长" v-model="input"></el-input>
+        <el-form-item label="平均年龄(PT1)">
+          <el-input-number v-model="form.pt1" :min="0"></el-input-number>
+        </el-form-item>
+        <el-form-item label="平均驾龄(PT2)">
+          <el-select v-model="form.pt2">
+            <el-option label="2 年以下" value="5"></el-option>
+            <el-option label="2 到 5 年" value="7"></el-option>
+            <el-option label="5 年以上" value="10"></el-option>
+          </el-select>
+        </el-form-item>
+          <el-form-item label="理论文化水平" prop="PT3">
+            <el-select v-model="form.pt3grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="分数" prop="syxz">
-            <el-input placeholder="分数" v-model="input"></el-input>
+          <el-form-item label="技术业务水平" prop="PT4">
+            <el-select v-model="form.pt4grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="驾驶车辆" prop="sgxt">
-            <el-input placeholder="驾驶车辆" v-model="input"></el-input>
+        <el-form-item label="驾驶违章记录(PT5)">
+          <el-input-number v-model="form.pt5" :min="0"></el-input-number>
+        </el-form-item>
+        <el-form-item label="车辆类型(BV1)">
+          <el-select v-model="form.bv1">
+            <el-option label="一级车辆" value="10"></el-option>
+            <el-option label="二级及以下车辆" value="6"></el-option>
+          </el-select>
+        </el-form-item>
+          <el-form-item label="车辆的平均营运车龄" prop="BV2">
+            <el-select v-model="form.bv2grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="驾驶车辆数" prop="qwer">
-            <el-input placeholder="驾驶车辆数" v-model="input"></el-input>
+          <el-form-item label="车辆的维修及保养情况" prop="BV3">
+            <el-select v-model="form.bv3grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="培训数量" prop="zyglss">
-            <el-input placeholder="培训数量" v-model="input"></el-input>
+          <el-form-item label="车辆的安全设施状况" prop="BV4">
+            <el-select v-model="form.bv4grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="培训时间" prop="dllx">
-            <el-input placeholder="培训时间" v-model="input"></el-input>
+          <el-form-item label="车辆的平均运营里程数" prop="BV5">
+            <el-select v-model="form.bv5grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="安全成本" prop="dlwlgl">
-            <el-input placeholder="安全成本" v-model="input"></el-input>
+          <el-form-item label="车辆的作业场所及管理" prop="BV6">
+            <el-select v-model="form.bv6grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
-
-          <el-form-item label="驾驶里程" prop="lcfhsblx">
-            <el-input placeholder="驾驶里程" v-model="input"></el-input>
+        <el-form-item label="安全组织管理(BM1)">
+        <el-select v-model="form.bm1grade">
+          <el-option label="优秀" value="excellent"></el-option>
+          <el-option label="良好" value="good"></el-option>
+          <el-option label="一般" value="average"></el-option>
+          <el-option label="较差" value="poor"></el-option>
+          <el-option label="差" value="bad"></el-option>
+        </el-select>
+        </el-form-item>
+        <el-form-item label="安全管理制度(BM2)">
+          <el-select v-model="form.bm2">
+            <el-option label="完善" value="10"></el-option>
+            <el-option label="不完善" value="0"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="安全费用投入(BM3)">
+          <el-select v-model="form.bm3">
+            <el-option label="1.5%及以上" value="0"></el-option>
+            <el-option label="1%-1.5%" value="2.5"></el-option>
+            <el-option label="0.5%-1%" value="5"></el-option>
+            <el-option label="0.25%-0.5%" value="7.5"></el-option>
+            <el-option label="0.25%以下" value="10"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="安全培训频率(BM4)">
+          <el-select v-model="form.bm4">
+            <el-option label="1以上" value="10"></el-option>
+            <el-option label="0.75-1" value="7.5"></el-option>
+            <el-option label="0.5-0.75" value="5"></el-option>
+            <el-option label="0.25-0.5" value="2.5"></el-option>
+            <el-option label="0.25以下" value="0"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="应急救援及事故处理(BM5)">
+          <el-input-number v-model="form.bm5M" :min="0"></el-input-number>
+          <el-input-number v-model="form.bm5N" :min="0"></el-input-number>
+        </el-form-item>
+      <el-form-item label="消防设备管理" prop="BM6">
+        <el-select v-model="form.bm6grade">
+          <el-option label="优秀" value="excellent"></el-option>
+          <el-option label="良好" value="good"></el-option>
+          <el-option label="一般" value="average"></el-option>
+          <el-option label="较差" value="poor"></el-option>
+          <el-option label="差" value="bad"></el-option>
+        </el-select>
+          </el-form-item>
+          <el-form-item label="信息监控系统" prop="BM7">
+            <el-select v-model="form.bm7grade">
+              <el-option label="优秀" value="excellent"></el-option>
+              <el-option label="良好" value="good"></el-option>
+              <el-option label="一般" value="average"></el-option>
+              <el-option label="较差" value="poor"></el-option>
+              <el-option label="差" value="bad"></el-option>
+            </el-select>
           </el-form-item>
       </el-form>
+      </div>
       <div class="button" style="margin-left: 15%;">
-        <el-button type="primary" @click="submitForm('riskForm')">提交风险指标</el-button>
+        <el-button type="primary" @click="submitForm">提交风险指标</el-button>
         <el-button @click="resetForm('riskForm')">重置</el-button>
-        <i class=""></i>
-        <el-button type="primary" @click="getForm('riskForm')">后台处理</el-button></div>
+</div>
     </div>
 
+
+<!--    表2-->
       <div class="pageCenter">
         <div class="pageContentTitle"
              style="padding-top:15px;line-height:30px;border-bottom:1px solid #E1E1E1;color:#262626;padding-left: 10px;font-size: 15px;font-weight: bold;">
-          企业安全等级评估结果
+          企业数据量化结果
         </div>
         <div class="riskform2" style="display: inline-block"></div>
+        <el-table :data="table2Data" style="width: 70%":model="riskForm2" :rules="rules" ref="riskForm2" label-width="150px" class="demo-riskForm2">
+          <el-table-column prop="label" label="标签名称"></el-table-column>
+          <el-table-column prop="value" label="量化值"></el-table-column>
+        </el-table>
 
-        <el-form style="width: 70%":model="riskForm2" :rules="rules" ref="riskForm2" label-width="150px" class="demo-riskForm2">
-          <el-form-item label="年龄" prop="id">
-            <el-input placeholder="年龄" v-model="input"></el-input>
-          </el-form-item>
 
-          <el-form-item label="工作时长" prop="cllx">
-            <el-input placeholder="工作时长" v-model="input"></el-input>
-          </el-form-item>
-
-          <el-form-item label="分数" prop="syxz">
-            <el-input placeholder="分数" v-model="input"></el-input>
-          </el-form-item>
-
-          <el-form-item label="驾驶车辆" prop="sgxt">
-            <el-input placeholder="驾驶车辆" v-model="input"></el-input>
-          </el-form-item>
-
-          <el-form-item label="驾驶车辆数" prop="qwer">
-            <el-input placeholder="驾驶车辆数" v-model="input"></el-input>
-          </el-form-item>
-
-          <el-form-item label="培训数量" prop="zyglss">
-            <el-input placeholder="培训数量" v-model="input"></el-input>
-          </el-form-item>
-
-          <el-form-item label="培训时间" prop="dllx">
-            <el-input placeholder="培训时间" v-model="input"></el-input>
-          </el-form-item>
-
-          <el-form-item label="安全成本" prop="dlwlgl">
-            <el-input placeholder="安全成本" v-model="input"></el-input>
-          </el-form-item>
-
-          <el-form-item label="驾驶里程" prop="lcfhsblx">
-            <el-input placeholder="驾驶里程" v-model="input"></el-input>
-          </el-form-item>
-        </el-form>
         <div class="button" style="margin-left: 15%;">
-          <el-button type="primary" @click="submitForm('riskForm')">提交风险指标</el-button>
-          <el-button @click="resetForm('riskForm')">重置</el-button>
+           <el-button @click="resetForm('riskForm')">重置</el-button>
           <i class=""></i>
           <el-button type="primary" @click="getForm('riskForm')">后台处理</el-button></div>
       </div>
@@ -141,58 +226,56 @@ import * as echarts from 'echarts';
   export default {
     data(){
       return{
+          form: {
+            dg1: null,
+            pt1: null,
+            pt2: null,
+            pt5: null,
+            bv1: null,
+           bm2: null,
+           bm3: null,
+           bm4: null,
+            bm5M: null,
+           bm5N: null,
+            dg2grade: null,
+            pt3grade: null,
+            pt4grade: null,
+            bv2grade: null,
+            bv3grade: null,
+            bv4grade: null,
+            bv5grade: null,
+            bv6grade: null,
+            bm1grade: null,
+            bm6grade: null,
+            bm7grade: null,
 
-          measurement:'',
-          riskresult:'',
-          riskForm: {
-            id:'',
-            cllx:'',
-            syxz:'',
-            sgxt:'',
-            qwer:'',
-            zyglss: '',
-            dllx: '',
-            dlwlgl: '',
-            lcfhsblx:''
-          },
-        // 表单验证规则
-        rules: {
-          id:[{ required: true, message: ' 请输入年龄', trigger: 'change' }],
-          cllx:[{ required: true, message: ' 请输入工作时长', trigger: 'change' }],
-          syxz: [{ required: true, message: '请输入分数', trigger: 'change' }],
-          sgxt: [{ required: true, message: '请输入驾驶车辆', trigger: 'change' }],
-          qwer: [{ required: true, message: '请输入驾驶车辆数', trigger: 'change' }],
-          zyglss: [{ required: true, message: '请输入培训数量', trigger: 'change' }],
-          dllx: [{ required: true, message: '请输入培训时间', trigger: 'change' }],
-          dlwlgl: [{ required: true, message: '请输入安全成本', trigger: 'change' }],
-          lcfhsblx: [{ required: true, message: '请输入驾驶里程', trigger: 'change' }],
-        },
-        Data:[{
-          level:'一级风险',
-          amount:'[0.385,0.476)',
-          explain:'安全生产较差，危险货物运输过程中事故发生的机率较大，事故发生会造成较多人员伤亡和财产损失，对社会造成巨大损失。',
-        },
-          {
-            level:'二级风险',
-            amount:'[0.476,0.535)',
-            explain:'安全生产状况一般，危险货物运输过程中事故发生的机率中等，事故发生会造成部分人员伤亡和财产损失。',
-          },
-          {
-            level:'三级风险',
-            amount:'[0.535,0.596)',
-            explain:'安全生产状况良好，危险货物运输过程中事故发生的机率小，事故发生会造成轻微人员伤亡和财产损失。',
-          },
-          {level:'四级风险',
-            amount:'[0.596,0.675)',
-            explain:'安全生产状况优秀，危险货物运输过程中事故发生的机率较小，事故发生不会造成人员伤亡和财产损失。',
-          }
+      },
+        dg1Options: [
+          { label: 'A 类爆炸品、易燃气体、极易燃液体、一级危险的氧化剂、剧毒物质', value: 4 },
+          { label: '爆炸品、氧化性气体、高度易燃液体、二级危险的氧化剂', value: 6 },
+          { label: '其他爆炸品、有毒气体、易燃液体、有机过氧化物、有害物质', value: 8 },
+          { label: '一般爆炸品、有毒气体、液体', value: 10 }
         ],
+
+        table2Data: []
+      };
+    },
+    watch: {
+      form: {
+        handler() {
+          this.calculateScores();
+        },
+        deep: true
       }
     },
+
+
     mounted() {
+
       var chartDom = document.getElementById('main');
       var myChart = echarts.init(chartDom);
       var option;
+
 
       option = {
         title: {
@@ -251,17 +334,146 @@ import * as echarts from 'echarts';
     },
 
     methods:{
+
+      calculateScore(pingfen) {
+        // 根据选择框的值计算评分
+        const grade = this.form.pingfen;
+        return this.getScoreFromGrade(grade);
+      },
+      // 添加其他指标的评分计算方法
+
+      getScoreFromGrade(grade) {
+        // 将评估等级转换为评分
+        switch (grade) {
+          case "excellent":
+            return 10;
+          case "good":
+            return 7.5;
+          case "average":
+            return 5;
+          case "poor":
+            return 2.5;
+          case "bad":
+            return 0;
+          default:
+            return 0;
+        }
+      },
+
+      calculateScoreDG1() {
+        if (this.form.dg1 === "货物类型1") {
+          return 10;
+        } else if (this.form.dg1 === "货物类型2") {
+          return 7.5;
+        } else if (this.form.dg1 === "货物类型3") {
+          return 5;
+        } else {
+          return 0;
+        }
+      },
+      calculateScorePT1() {
+        if (this.form.pt1 >= 1.2) {
+          return 0;
+        } else if (this.form.pt1 >= 0.9 && this.form.pt1 < 1.2) {
+          return 2.5;
+        } else if (this.form.pt1 >= 0.6 && this.form.pt1 < 0.9) {
+          return 5;
+        } else if (this.form.pt1 >= 0.3 && this.form.pt1 < 0.6) {
+          return 7.5;
+        } else {
+          return 10;
+        }
+      },
+      calculateScorePT2() {
+        if (this.form.pt2 === "2 年以下") {
+          return 10;
+        } else if (this.form.pt2 === "2 到 5 年") {
+          return 7.5;
+        } else {
+          return 5;
+        }
+      },
+      calculateScoreBV1() {
+        if (this.form.bv1 === "一级车辆") {
+          return 10;
+        } else {
+          return 6;
+        }
+      },
+      calculateScoreBM2() {
+        return this.form.bm2 === "完善" ? 10 : 0;
+      },
+      calculateScoreBM3() {
+        if (this.form.bm3 >= 0.015) {
+          return 0;
+        } else if (this.form.bm3 >= 0.01 && this.form.bm3 < 0.015) {
+          return 2.5;
+        } else if (this.form.bm3 >= 0.005 && this.form.bm3 < 0.01) {
+          return 5;
+        } else if (this.form.bm3 >= 0.0025 && this.form.bm3 < 0.005) {
+          return 7.5;
+        } else {
+          return 10;
+        }
+      },
+      calculateScoreBM4() {
+        if (this.form.bm4 >= 1) {
+          return 10;
+        } else if (this.form.bm4 >= 0.75 && this.form.bm4 < 1) {
+          return 7.5;
+        } else if (this.form.bm4 >= 0.5 && this.form.bm4 < 0.75) {
+          return 5;
+        } else if (this.form.bm4 >= 0.25 && this.form.bm4 < 0.5) {
+          return 2.5;
+        } else {
+          return 0;
+        }
+      },
+
 // 添加数据函数
-      submitForm(riskForm) {
-        const _this = this;
-        this.$refs[riskForm].validate((valid) => {
-          if (valid) {
-            /*this.$axios.put('http://localhost:8181/risk/update',this.riskForm).then(function (resp) {
-              console.log(123)
-            });*/
-            alert('已成功提交行驶数据')
-          }
-        })
+      submitForm() {
+
+          const dg1Score = this.calculateScoreDG1();
+          const dg2Score = this.calculateScore(dg2Score);
+          const pt1Score = this.calculateScorePT1();
+          const pt2Score = this.calculateScorePT2();
+          const pt3Score = this.calculateScore(pt3Score)
+          const pt4Score = this.calculateScore(pt3Score)
+          const bv1Score = this.calculateScoreBV1();
+          const bv2Score = this.calculateScore(bv2Score);
+          const bv3Score = this.calculateScore(bv3Score);
+          const bv4Score = this.calculateScore(bv4Score);
+          const bv5Score = this.calculateScore(bv5Score);
+          const bv6Score = this.calculateScore(bv6Score);
+          const bm1Score = this.calculateScore(bm1Score);
+          const bm2Score = this.calculateScoreBM2();
+          const bm3Score = this.calculateScoreBM3();
+          const bm4Score = this.calculateScoreBM4();
+          const bm6Score = this.calculateScore(bm6Score);
+          const bm7Score = this.calculateScore(bm7Score);
+
+          this.table2Data = [
+            { label: "危险货物类型(DG1)", value: dg1Score },
+            { label: "危险货物的装卸技术(DG2)", value: dg2Score },
+            { label: "平均年龄(PT1)", value: pt1Score },
+            { label: "平均驾龄(PT2)", value: pt2Score },
+            { label: "理论文化水平(PT3) ", value: pt3Score },
+            { label: "技术业务水平(PT4) ", value: pt4Score },
+            { label: "车辆类型(BV1)", value: bv1Score },
+            { label: "车辆的平均营运车龄(BV2)", value: bv2Score },
+            { label: "车辆的维修及保养情况(BV3)", value: bv3Score },
+            { label: "车辆的安全设施状况(BV4)", value: bv4Score },
+            { label: "车辆的平均运营里程数(BV5)", value: bv5Score },
+            { label: "车辆的作业场所及管理(BV6)", value: bv6Score },
+            { label: "安全管理组织(𝐵𝑀1)", value: bm1Score },
+            { label: "安全管理制度(𝐵𝑀2)", value: bm2Score },
+            { label: "安全费用投入(𝐵𝑀3)", value: bm3Score },
+            { label: "安全培训频率(𝐵𝑀4)", value: bm4Score },
+            // { label: "应急救援及事故处理(𝐵𝑀5) ", value: bm5Score },
+            { label: "消防设备管理(𝐵𝑀6)", value: bm6Score },
+            { label: "信息监控系统(𝐵𝑀7)", value: bm7Score }
+          ];
+
       },
 
 // 重置数据界面的函数
@@ -295,7 +507,7 @@ import * as echarts from 'echarts';
 
 <style scoped>
 
-  .riskform{margin-top: 5px;margin-bottom: 25px}
+  .riskform{margin-top: 5px;margin-bottom: 25px; }
   .riskform2{margin-top: 5px;margin-bottom: 25px}
   .text{
     font-size: 15px;
@@ -312,6 +524,7 @@ import * as echarts from 'echarts';
     margin-right: 1%;
     float: left;
     height:100%;
+    overflow-y: auto; /* 添加垂直滚动样式 */
   }
   .pageCenter{
     background: #fff;
